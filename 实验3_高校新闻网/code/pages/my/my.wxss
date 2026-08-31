@@ -1,0 +1,77 @@
+/* 顶部区域：使用清新浅蓝色调 (LightSkyBlue) */
+#myLogin {
+  background: linear-gradient(135deg, #87CEFA 0%, #B0E2FF 100%);
+  height: 380rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; 
+}
+.settings-btn {
+  position: absolute; top: 30rpx; right: 30rpx; color: #FFFFFF; font-size: 26rpx;
+  padding: 8rpx 24rpx; border: 2rpx solid rgba(255, 255, 255, 0.8); border-radius: 30rpx;
+}
+.avatar-btn { background: transparent; padding: 0; margin: 0; line-height: normal; }
+.avatar-btn::after { border: none; }
+#myIcon { width: 160rpx; height: 160rpx; border-radius: 50%; border: 6rpx solid #FFFFFF; margin-bottom: 12rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1); }
+
+/* 昵称与修改标识符 */
+.nickname-box {
+  display: flex; align-items: center; justify-content: center; padding: 6rpx 24rpx;
+  background-color: rgba(255, 255, 255, 0.25); border-radius: 30rpx; margin-top: 8rpx;
+}
+#nickName { color: #FFFFFF; font-size: 32rpx; font-weight: bold; }
+.edit-icon { color: #FFFFFF; font-size: 30rpx; margin-left: 12rpx; opacity: 0.9; }
+
+.login-trigger-btn { background-color: #FFFFFF; color: #87CEFA; font-size: 30rpx; font-weight: bold; border-radius: 40rpx; padding: 14rpx 50rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05); }
+
+/* Tab导航与列表 */
+.tab-nav { display: flex; background-color: #FFFFFF; border-bottom: 2rpx solid #F0F4F8; }
+.tab-item { flex: 1; text-align: center; padding: 25rpx 0; font-size: 30rpx; color: #666666; position: relative; }
+.tab-item.active { color: #87CEFA; font-weight: bold; }
+.tab-item.active::after { content: ''; position: absolute; bottom: 0; left: 35%; width: 30%; height: 6rpx; background-color: #87CEFA; border-radius: 6rpx; }
+.empty-tip { text-align: center; font-size: 26rpx; color: #AAAAAA; margin-top: 80rpx; padding: 0 20rpx; }
+
+/* 滑动取消收藏 */
+.touch-item { display: flex; justify-content: space-between; border-bottom: 1rpx solid #F0F4F8; width: 100%; overflow: hidden; background: #FFFFFF;}
+.content-box { display: flex; flex-direction: row; align-items: center; padding: 20rpx 25rpx; width: 100%; margin-left: 0; background-color: #FFFFFF; transition: margin-left 0.2s ease-in-out; }
+.content-box image { width: 230rpx; height: 150rpx; border-radius: 8rpx; flex-shrink: 0; margin-right: 20rpx; }
+.content-box text { width: 100%; font-size: 28rpx; color: #333333; line-height: 44rpx; }
+.del-btn { background-color: #FF6347; width: 160rpx; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #FFFFFF; font-size: 28rpx; flex-shrink: 0; transform: translateX(160rpx); transition: transform 0.2s ease-in-out; }
+.touch-move-active .content-box { margin-left: -160rpx; }
+.touch-move-active .del-btn { transform: translateX(0); }
+
+.list-item { display: flex; flex-direction: row; align-items: center; border-bottom: 1rpx solid #F0F4F8; padding: 20rpx 25rpx; background: #FFFFFF; }
+.list-item image { width: 230rpx; height: 150rpx; border-radius: 8rpx; flex-shrink: 0; margin-right: 20rpx; }
+.list-item text { width: 100%; font-size: 28rpx; color: #333333; line-height: 44rpx; }
+
+/* 底部弹出授权弹窗 */
+.auth-mask { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 1000; }
+.auth-bottom-modal { position: fixed; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 32rpx 32rpx 0 0; padding: 40rpx 40rpx 60rpx 40rpx; z-index: 1001; transform: translateY(100%); transition: transform 0.3s ease-in-out; }
+.auth-bottom-modal.show { transform: translateY(0); }
+
+.auth-header { display: flex; align-items: center; margin-bottom: 40rpx; }
+.auth-logo { width: 48rpx; height: 48rpx; border-radius: 50%; margin-right: 16rpx; }
+.auth-title { font-size: 30rpx; color: #333; font-weight: 500; }
+
+.auth-desc-title { font-size: 36rpx; font-weight: bold; color: #111; margin-bottom: 12rpx; }
+.auth-desc-sub { font-size: 26rpx; color: #888; margin-bottom: 40rpx; }
+
+.auth-form { border-top: 1rpx solid #EEEEEE; border-bottom: 1rpx solid #EEEEEE; }
+.auth-row { display: flex; align-items: center; justify-content: space-between; padding: 24rpx 0; border-bottom: 1rpx solid #F5F5F5; }
+.auth-row.border-none { border-bottom: none; }
+.auth-label { font-size: 32rpx; color: #333; width: 120rpx; }
+
+.auth-avatar-btn { background: transparent; padding: 0; margin: 0; display: flex; align-items: center; flex: 1; justify-content: flex-end; }
+.auth-avatar-btn::after { border: none; }
+.auth-temp-avatar { width: 80rpx; height: 80rpx; border-radius: 12rpx; margin-right: 12rpx; }
+.auth-arrow { color: #CCCCCC; font-size: 32rpx; font-family: consolas; }
+
+.auth-input { flex: 1; text-align: right; font-size: 32rpx; color: #333; }
+
+.auth-actions { display: flex; justify-content: space-between; margin-top: 60rpx; gap: 30rpx; }
+.auth-btn-reject { flex: 1; background: #F2F2F2; color: #87CEFA; font-size: 32rpx; font-weight: bold; border-radius: 16rpx; height: 88rpx; line-height: 88rpx; }
+.auth-btn-reject::after { border: none; }
+.auth-btn-allow { flex: 1; background: #87CEFA; color: #FFFFFF; font-size: 32rpx; font-weight: bold; border-radius: 16rpx; height: 88rpx; line-height: 88rpx; }
+.auth-btn-allow::after { border: none; }

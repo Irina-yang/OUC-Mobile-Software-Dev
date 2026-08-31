@@ -1,0 +1,35 @@
+<!-- 整个页面采用微灰蓝背景 -->
+<view class="page-wrapper">
+  
+  <!-- 核心内容包裹在精致的白色卡片中 -->
+  <view class="article-card">
+    <view class="title-box">
+      <view class="title">{{article.title}}</view>
+    </view>
+    
+    <view class="meta-info">
+      <text class="author">
+        <text class="icon">✍️</text> {{article.author || '海大新闻网'}}
+      </text>
+      <text class="add_date">
+        <text class="icon">📅</text> {{article.add_date}}
+      </text>
+    </view>
+
+    <view class="poster">
+      <image src="{{article.poster}}" mode="widthFix"></image>
+    </view>
+
+    <view class="content">
+      <text user-select="true" decode="true">{{article.content}}</text>
+    </view>
+  </view>
+
+  <!-- 底部悬浮质感的按钮组 -->
+  <view class="btn-group">
+    <button wx:if="{{isAdd}}" class="action-btn active" bindtap="cancelFavorites">♥ 已收藏</button>
+    <button wx:else class="action-btn" bindtap="addFavorites">♡ 收藏新闻</button>
+    <button class="action-btn download-btn" bindtap="downloadAsWord">↓ 导出 Word</button>
+  </view>
+
+</view>

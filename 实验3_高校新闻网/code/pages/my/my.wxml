@@ -1,0 +1,85 @@
+<!-- 登录面板 (清新浅蓝渐变背景) -->
+<view id="myLogin">
+  <view class="settings-btn" wx:if="{{isLogin}}" bindtap="openSettings">设置</view>
+
+  <block wx:if="{{isLogin}}">
+    <!-- 点击头像可直接更换 -->
+    <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChangeAvatar">
+      <image id="myIcon" src="{{src}}"></image>
+    </button>
+    <!-- 点击昵称区弹出修改框 -->
+    <view class="nickname-box" bindtap="editNickName">
+      <text id="nickName">{{nickName}}</text>
+      <text class="edit-icon">✎</text>
+    </view>
+  </block>
+  
+  <button wx:else class="login-trigger-btn" bindtap="openAuthModal">未登录，点击登录</button>
+</view>
+
+<!-- 视图切换 Tab -->
+<view class="tab-nav">
+  <view class="tab-item {{currentTab === 'fav' ? 'active' : ''}}" bindtap="switchTab" data-tab="fav">
+    我的收藏 ({{num}})
+  </view>
+  <view class="tab-item {{currentTab === 'history' ? 'active' : ''}}" bindtap="switchTab" data-tab="history">
+    阅读历史
+  </view>
+</view>
+
+<!-- 列表展示区 -->
+<view id="news-list">
+  <!-- 收藏列表：支持滑动显示取消收藏按钮 -->
+  <block wx:if="{{currentTab === 'fav'}}">
+    <view class="empty-tip" wx:if="{{newsList.length === 0}}">暂无收藏内容，向左滑动收藏项可快捷取消</view>
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{newsList}}" wx:key="id" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+      <view class="content-box" bindtap="goToDetail" data-id="{{item.id}}">
+        <image src="{{item.poster}}" mode="aspectFill"></image>
+        <text>{{item.title}}\n{{item.add_date}}</text>
+      </view>
+      <view class="del-btn" catchtap="quickCancelFav" data-id="{{item.id}}">取消收藏</view>
+    </view>
+  </block>
+
+  <!-- 历史记录列表 -->
+  <block wx:if="{{currentTab === 'history'}}">
+    <view class="empty-tip" wx:if="{{historyList.length === 0}}">暂无阅读历史</view>
+    <view class="list-item" wx:for="{{historyList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image src="{{item.poster}}" mode="aspectFill"></image>
+      <text>{{item.title}}\n阅读于: {{item.read_time}}</text>
+    </view>
+  </block>
+</view>
+
+<!-- 底部弹出允许授权的弹窗 -->
+<view class="auth-mask" wx:if="{{showAuthModal}}" bindtap="closeAuthModal"></view>
+<view class="auth-bottom-modal {{showAuthModal ? 'show' : ''}}">
+  <view class="auth-header">
+    <image class="auth-logo" src="/images/index_blue.png"></image>
+    <text class="auth-title">海大新闻网 申请</text>
+  </view>
+  
+  <view class="auth-desc-title">获取你的昵称、头像</view>
+  <view class="auth-desc-sub">提供个性化服务，如评论、个人中心展示等</view>
+
+  <view class="auth-form">
+    <view class="auth-row">
+      <text class="auth-label">头像</text>
+      <!-- 获取微信头像 -->
+      <button class="auth-avatar-btn" open-type="chooseAvatar" bindchooseavatar="onTempAvatar">
+        <image class="auth-temp-avatar" src="{{tempAvatar}}"></image>
+        <text class="auth-arrow">></text>
+      </button>
+    </view>
+    <view class="auth-row border-none">
+      <text class="auth-label">昵称</text>
+      <!-- 获取微信昵称 -->
+      <input class="auth-input" type="nickname" placeholder="请输入或获取昵称" value="{{tempNickName}}" bindinput="onTempNickName" bindblur="onTempNickName" />
+    </view>
+  </view>
+
+  <view class="auth-actions">
+    <button class="auth-btn-reject" bindtap="closeAuthModal">取消</button>
+    <button class="auth-btn-allow" bindtap="confirmLogin">允许授权</button>
+  </view>
+</view>

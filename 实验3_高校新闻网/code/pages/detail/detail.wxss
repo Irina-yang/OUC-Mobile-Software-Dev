@@ -1,0 +1,99 @@
+page {
+  background-color: #F4F7F9; 
+}
+
+.page-wrapper {
+  padding: 30rpx 20rpx 80rpx 20rpx;
+}
+
+.article-card {
+  background-color: #FFFFFF;
+  border-radius: 30rpx;
+  padding: 40rpx 35rpx;
+  box-shadow: 0 10rpx 40rpx rgba(0, 79, 159, 0.05);
+}
+
+.title-box {
+  /* 核心优化：左侧装饰条使用色卡中的过渡蓝 */
+  border-left: 10rpx solid #007CC1;
+  padding-left: 20rpx;
+  margin-bottom: 30rpx;
+  border-radius: 4rpx;
+}
+
+.title {
+  font-size: 42rpx;
+  font-weight: 800;
+  line-height: 60rpx;
+  color: #2C3E50;
+}
+
+.meta-info {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30rpx;
+  font-size: 24rpx;
+  color: #7F8C8D;
+  margin-bottom: 40rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx dashed rgba(0, 124, 193, 0.15);
+}
+
+.meta-info .icon {
+  font-size: 22rpx;
+  margin-right: 6rpx;
+}
+
+.poster image {
+  width: 100%;
+  border-radius: 20rpx;
+  display: block;
+  margin: 0 auto 40rpx auto;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+.content {
+  font-size: 32rpx;
+  line-height: 64rpx;
+  color: #34495E;
+  text-align: justify;
+}
+
+.content text {
+  display: inline;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60rpx;
+  padding: 0 10rpx;
+}
+
+/* 核心优化：底部操作按钮引入色卡色彩体系 */
+.action-btn {
+  width: 320rpx;
+  height: 90rpx;
+  line-height: 86rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  border-radius: 45rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid #007CC1;
+  color: #007CC1;
+  box-shadow: 0 8rpx 20rpx rgba(0, 124, 193, 0.08);
+  transition: all 0.3s ease;
+}
+
+.action-btn.active {
+  background: linear-gradient(90deg, #004F9F 0%, #007CC1 100%);
+  color: #FFFFFF;
+  border: 2rpx solid transparent;
+  box-shadow: 0 10rpx 24rpx rgba(0, 124, 193, 0.25);
+}
+
+.download-btn {
+  border: 2rpx solid #00A4C1;
+  color: #00A4C1;
+  box-shadow: 0 8rpx 20rpx rgba(0, 164, 193, 0.08);
+}

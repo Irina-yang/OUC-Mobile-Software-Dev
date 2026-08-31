@@ -1,0 +1,65 @@
+<!-- 核心：底层模糊背景与清新浅蓝遮罩 -->
+<image class="page-bg" src="/images/背景.jpg" mode="aspectFill"></image>
+<view class="page-bg-overlay"></view>
+
+<!-- 顶部区域 (整体大幅下移，留出樱花呼吸空间) -->
+<view class="header-container">
+  
+  <!-- 修改：左上角官方整体 Logo (删除了多余的文字标签) -->
+  <view class="brand-box">
+    <image class="brand-logo" src="/images/logo.png" mode="heightFix"></image>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <icon type="search" size="16" color="#87CEFA"></icon>
+    <input class="search-input" placeholder="搜索海大新闻..." placeholder-style="color:#333333" value="{{searchKeyword}}" bindinput="onSearchInput" bindconfirm="onSearchConfirm" confirm-type="search" />
+    <icon type="clear" size="16" color="#ccc" wx:if="{{searchKeyword.length > 0}}" bindtap="clearSearchInput"></icon>
+  </view>
+</view>
+
+<!-- 搜索历史 -->
+<view class="search-history" wx:if="{{isSearching && searchHistory.length > 0}}">
+  <view class="history-header">
+    <text class="title">搜索历史</text>
+    <text class="clear-btn" bindtap="clearSearchHistory">清空</text>
+  </view>
+  <view class="history-tags">
+    <view class="tag" wx:for="{{searchHistory}}" wx:key="*this" bindtap="tapHistoryTag" data-keyword="{{item}}">{{item}}</view>
+  </view>
+</view>
+
+<!-- 幻灯片展示区 -->
+<swiper wx:if="{{!isSearching}}" class="banner-swiper" indicator-dots autoplay interval="5000" duration="500" circular indicator-active-color="#87CEFA" indicator-color="rgba(255,255,255,0.8)">
+  <block wx:for="{{swiperImg}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item.src}}" mode="aspectFill" class="slide-image"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 专题分类导航 (半透明胶囊) -->
+<scroll-view wx:if="{{!isSearching}}" class="category-nav" scroll-x enable-flex enhanced show-scrollbar="false">
+  <view wx:for="{{categories}}" wx:key="index" class="cat-item {{currentCat === item ? 'active' : ''}}" bindtap="switchCategory" data-cat="{{item}}">{{item}}</view>
+</scroll-view>
+
+<!-- 新闻列表 (磨砂质感卡片) -->
+<view id="news-list">
+  <view class="empty-tip" wx:if="{{newsList.length === 0}}">未找到相关新闻</view>
+  
+  <view class="news-card" wx:for="{{newsList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+    <image class="news-poster" src="{{item.poster}}" mode="aspectFill"></image>
+    <view class="news-info">
+      <text class="news-title">{{item.title}}</text>
+      <view class="news-meta">
+        <text class="news-tag">{{item.category}}</text>
+        <text class="news-date">{{item.add_date}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 回到顶部悬浮按钮 -->
+<view class="back-top-btn {{showBackTop ? 'show' : ''}}" bindtap="scrollToTop">
+  <text class="arrow">↑</text>
+</view>
