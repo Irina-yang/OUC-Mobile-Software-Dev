@@ -1,0 +1,4 @@
+<view class="container loading-container">
+  <view class="box-animation"></view>
+  <text class="loading-text">推箱子加载中...</text>
+</view>

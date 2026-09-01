@@ -1,0 +1,23 @@
+.loading-container {
+  justify-content: center;
+}
+
+.box-animation {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: var(--primary-color);
+  border-radius: 16rpx;
+  animation: jump 1s infinite ease-in-out alternate;
+}
+
+.loading-text {
+  margin-top: 40rpx;
+  color: var(--text-main);
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+@keyframes jump {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-40rpx) scale(0.9); }
+}

@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header-title">通关荣誉榜</view>
+
+  <!-- 1. 新版微信授权登录区：头像昵称填写 -->
+  <view class="auth-card" wx:if="{{isGuest}}">
+    <!-- 点击头像框即可唤起微信官方头像选择 -->
+    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="auth-icon" src="{{tempAvatar || '/images/icons/dog.png'}}" mode="aspectFill"></image>
+    </button>
+    
+    <view class="auth-text">
+      <view class="auth-title">点击左侧设头像</view>
+      <!-- 点击输入框即可一键填入微信真实昵称 -->
+      <input type="nickname" class="nickname-input" placeholder="点击获取微信昵称" bindblur="onInputNickname" />
+    </view>
+    
+    <button class="auth-btn" bindtap="saveProfile">保存</button>
+  </view>
+  
+  <!-- 登录后的状态 -->
+  <view class="auth-card logged-in" wx:else>
+    <image class="auth-icon" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    <view class="auth-text">
+      <text class="auth-title">欢迎回来</text>
+      <text class="auth-sub nickname-text">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <!-- 2. 榜单列表区 -->
+  <view class="board-list">
+    <view class="board-item {{index < 3 ? 'top-three' : ''}}" wx:for="{{leaderboard}}" wx:key="index">
+      <view class="rank-medal" wx:if="{{index === 0}}">🥇</view>
+      <view class="rank-medal" wx:elif="{{index === 1}}">🥈</view>
+      <view class="rank-medal" wx:elif="{{index === 2}}">🥉</view>
+      <view class="rank-num" wx:else>{{index + 1}}</view>
+      
+      <!-- 加了防爆锁的头像 -->
+      <image class="player-avatar" src="{{item.avatar || '/images/icons/dog.png'}}" mode="aspectFill"></image>
+      
+      <view class="player-info">
+        <text class="name">{{item.nickname}}</text>
+        <text class="level-tag">第 {{item.level}} 关</text>
+      </view>
+      
+      <view class="score">
+        <text class="score-num">{{item.score}}</text> 步
+      </view>
+    </view>
+  </view>
+</view>

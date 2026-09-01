@@ -1,0 +1,31 @@
+/* 定义全局主题色变量（等待您的确切色值替换） */
+page {
+  --primary-color: #E64340; 
+  --bg-color: #F8F8F8;
+  --text-main: #333333;
+  --text-sub: #888888;
+  
+  background-color: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+}
+
+/* 统一页面容器弹性布局 */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+
+/* 全局大标题通用样式 */
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 40rpx;
+  text-align: center;
+}

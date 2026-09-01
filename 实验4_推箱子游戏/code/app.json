@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/loading/loading",
+    "pages/index/index",
+    "pages/game/game",
+    "pages/leaderboard/leaderboard"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#EBA2C4",
+    "navigationBarTitleText": "推箱子",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

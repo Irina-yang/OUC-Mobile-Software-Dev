@@ -1,0 +1,20 @@
+<view class="container">
+  <!-- 顶部状态栏 -->
+  <view class="header-info">
+    <view class="title">第 {{level + 1}} 关</view>
+    <view class="step-counter">步数: {{stepCount}}</view>
+  </view>
+
+  <!-- 游戏高清画布 -->
+  <canvas type="2d" id="myCanvas" class="game-canvas" 
+          disable-scroll="true"
+          bindtouchstart="touchStart" 
+          bindtouchend="touchEnd" 
+          bindtap="onCanvasTap"></canvas>
+
+  <!-- 底部操作按钮 -->
+  <view class="action-btns">
+    <button class="sub-btn" bindtap="undoGame">撤销一步</button>
+    <button class="sub-btn restart" bindtap="restartGame">重新开始</button>
+  </view>
+</view>
