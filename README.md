@@ -75,3 +75,23 @@
 <img width="974" height="571" alt="图片" src="https://github.com/user-attachments/assets/c66695da-6fd3-40ec-9cd0-fa264d36dd6c" />
 <img width="1004" height="600" alt="图片" src="https://github.com/user-attachments/assets/aed788e1-c704-426b-a78c-fcf28a40938f" />
 <img width="997" height="602" alt="图片" src="https://github.com/user-attachments/assets/e577cb21-7133-4ee3-b5d8-62c9b3fde297" />
+
+### [实验4：推箱子游戏](./实验4_推箱子游戏)
+
+- **状态**: ✅ 已完成
+- **目录结构说明**: 为了落实“从整体框架搭建到高级功能重构”的进阶学习目标，本次实验完整代码包含以下核心模块：
+    i. `pages/game`: 包含了重构后的核心游玩区。搭载了基于 Canvas 2D 的高清渲染引擎与图片预加载机制，并实现了基于状态历史栈的撤销（Undo）机制。
+    ii. `pages/leaderboard`: 包含了原生级的用户授权与排行区。接入微信最新的头像填写与昵称组件，完成本地数据闭环。
+    iii. `utils/data.js`: 包含了关卡数据中心。采用二维数组分离管理地图地形与动态物体，保证绘图渲染与业务逻辑的完全解耦。
+- **未完全完成功能说明**: 基于移动端性能限制及纯本地测试的实验环境，原设计文档中的部分高阶特性进行了合理的技术降级：
+    i. `自动解答/通关回放功能`: 在前端直接执行完整 A* 寻路算法会引发主线程阻塞与严重掉帧。当前以“撤销一步”历史状态栈作为替代方案，兼顾玩家容错体验与设备运行性能。
+    ii. `多端互通全局排行榜`: 因未开启云开发且无独立后端 API，当前采用本地缓存构建排行系统，满足课程闭环演示需求。
+    iii. `辅助解谜道具（炸弹/传送等）`: 开发周期内优先保障了核心物理逻辑与多端交互（手势滑动、精准点击、原生震动）的流畅度，此类边缘拓展玩法暂被搁置。
+- **实验报告**: 详细的需求分析、UI视觉规范及底层 Canvas 引擎重构复盘均已附在同级目录下的实验报告文档中。
+  
+## 📷 运行截图
+<img width="323" height="433" alt="图片" src="https://github.com/user-attachments/assets/dc0aab22-d9e7-4772-9925-b6704a897fc2" />
+<img width="308" height="422" alt="图片" src="https://github.com/user-attachments/assets/63dab2e0-c3d9-4885-b2c0-a52388865695" />
+<img width="1132" height="566" alt="图片" src="https://github.com/user-attachments/assets/1cd2c297-1174-45e2-bde2-0efc196f39c1" />
+
+
