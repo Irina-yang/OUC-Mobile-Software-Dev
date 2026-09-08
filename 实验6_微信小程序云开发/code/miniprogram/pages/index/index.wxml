@@ -1,0 +1,65 @@
+<view class="container">
+  <!-- 顶部导航 (Top Tabs) -->
+  <image src="/images/home.png" style="width: 100rpx; height: 100rpx; background: red;"></image>
+  <view class="top-nav">
+    <view class="nav-item {{currentTab === 'hot' ? 'active' : ''}}" bindtap="switchTab" data-tab="hot">发现</view>
+    <view class="nav-item {{currentTab === 'time' ? 'active' : ''}}" bindtap="switchTab" data-tab="time">关注</view>
+  </view>
+
+  <!-- 动态流列表 -->
+  <scroll-view class="feed-list" scroll-y>
+    <block wx:for="{{posts}}" wx:key="_id">
+      <view class="post-card">
+        <!-- 头部: 左图右文 + 关注 -->
+        <view class="header">
+          <image class="avatar" src="{{item.authorInfo.avatarUrl}}" mode="aspectFill"></image>
+          <text class="nickname">{{item.authorInfo.nickname}}</text>
+          <view class="follow-btn">+ 关注</view>
+        </view>
+        
+        <!-- 文案区 -->
+        <view class="content">
+          <text class="text-content {{item.isExpanded ? 'expanded' : 'collapsed'}}">{{item.content}}</text>
+          <text class="expand-btn" wx:if="{{item.content.length > 50}}" bindtap="toggleExpand" data-index="{{index}}">{{item.isExpanded ? '收起' : '展开'}}</text>
+        </view>
+        
+        <!-- 视觉区 (9宫格切片渲染) -->
+        <view class="media-area" wx:if="{{item.images && item.images.length > 0}}">
+          <block wx:for="{{item.images}}" wx:for-item="img" wx:for-index="imgIndex" wx:key="*this">
+            <!-- 严格执行大纲：只渲染前9张 -->
+            <view class="img-wrapper" wx:if="{{imgIndex < 9}}" bindtap="previewImage" data-urls="{{item.images}}" data-current="{{img}}">
+              <image class="grid-img" src="{{img}}" mode="aspectFill"></image>
+              <!-- 第9张且总数超限时，覆盖半透明蒙层 -->
+              <view class="more-mask" wx:if="{{imgIndex === 8 && item.images.length > 9}}">
+                +{{item.images.length - 9}}
+              </view>
+            </view>
+          </block>
+        </view>
+        
+        <!-- 互动组件重构 (Action Footer) -->
+        <view class="action-footer">
+          <view class="action-item dislike" bindtap="onDislike" data-id="{{item._id}}">
+            <image class="icon" src="../../images/dislike.png"></image>
+            <text>不喜欢</text>
+          </view>
+          <view class="right-actions">
+            <view class="action-item comment">
+              <image class="icon" src="../../images/comment.png"></image>
+              <text>{{item.commentCount || 0}}</text>
+            </view>
+            <view class="action-item like" bindtap="onLike" data-id="{{item._id}}">
+              <image class="icon" src="../../images/like.png"></image>
+              <text class="{{item.isLiked ? 'liked-text' : ''}}">{{item.likeCount || 0}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{posts.length === 0}}">
+      <text>暂无动态，快去发布第一条作品吧</text>
+    </view>
+  </scroll-view>
+</view>

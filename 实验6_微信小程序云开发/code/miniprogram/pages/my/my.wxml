@@ -1,0 +1,89 @@
+<view class="page-container">
+  
+  <!-- 未登录状态：小红书登录页风格 -->
+  <block wx:if="{{!isLogin}}">
+    <view class="login-page">
+      <view class="login-header">
+        <view class="logo-title">图片分享社区</view>
+        <view class="login-subtitle">登录后展示自己</view>
+      </view>
+
+      <view class="login-form">
+        <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <image class="avatar" src="{{tempAvatar}}" mode="aspectFill"></image>
+          <view class="avatar-mask">修改</view>
+        </button>
+        <text class="avatar-tip">点击上方设置头像</text>
+
+        <input class="nickname-input" type="nickname" placeholder="请输入您的昵称" placeholder-class="input-placeholder" bindblur="onInputNickname" />
+        
+        <button class="login-btn" bindtap="doLogin">确认授权登录</button>
+      </view>
+
+      <view class="login-footer">
+        <view class="agreement-row">
+          <text class="agreement-text">登录即代表同意《用户协议》和《隐私政策》</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 已登录状态：个人主页（带背景更换、关注数统计） -->
+  <block wx:else>
+    <view class="header-section">
+      <!-- 背景图支持默认，点击可更换 -->
+      <image class="bg-img" src="{{bgImgUrl}}" mode="aspectFill" bindtap="changeBgImage"></image>
+      <view class="change-bg-tip">点击更换背景</view>
+      <view class="gradient-mask"></view> 
+
+      <view class="user-info-card">
+        <image class="avatar logged-in" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+        <text class="nickname">{{userInfo.nickName}}</text>
+        
+        <!-- 数据统计栏：动态数与关注数 -->
+        <view class="stats-row">
+          <text class="stat-item">动态 {{myPosts.length}}</text>
+          <text class="stat-divider">|</text>
+          <text class="stat-item">关注 {{followingCount}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 个人发布内容区 -->
+    <view class="content-section">
+      <view class="section-title">我的发布</view>
+      <view wx:if="{{myPosts.length === 0}}" class="empty-tips">您还没有发布过动态哦，快去发布吧~</view>
+      
+      <view class="post-card" wx:for="{{myPosts}}" wx:key="_id">
+        <view class="post-header">
+          <image class="post-avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+          <text class="post-nickname">{{item.nickName}}</text>
+        </view>
+
+        <view class="post-content">
+          <text class="post-text {{item.isExpanded ? '' : 'text-clamp'}}">{{item.content}}</text>
+          <text class="expand-btn" data-index="{{index}}" bindtap="toggleText" wx:if="{{item.content.length > 50}}">
+            {{item.isExpanded ? '收起' : '展开'}}
+          </text>
+        </view>
+
+        <view class="post-grid">
+          <block wx:for="{{item.photos}}" wx:for-item="img" wx:for-index="imgIndex" wx:key="*this">
+            <image wx:if="{{imgIndex < 9}}" class="grid-img" src="{{img}}" mode="aspectFill" lazy-load="true"></image>
+          </block>
+        </view>
+
+        <view class="post-footer">
+          <view class="post-date">{{item.addDate}}</view>
+          <view class="action-right">
+            <view class="action-btn">
+              <text class="action-emoji">👍</text>
+              <text class="action-num">{{item.likes}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

@@ -1,0 +1,26 @@
+/* 基础页面重置 */
+page {
+  background-color: #f6f6f6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* 全局卡片容器规范 (用于后续首页动态流、详情页等) */
+.card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+}
+
+/* 清除浮动工具类 */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,24 @@
+<view class="container">
+  <!-- 文本输入区 -->
+  <view class="input-area">
+    <textarea class="content-input" placeholder="分享你的约拍客片或日常..." bindinput="onInput" maxlength="500" value="{{content}}"></textarea>
+    <view class="word-count">{{content.length}}/500</view>
+  </view>
+
+  <!-- 视觉区 (9宫格上传) -->
+  <view class="image-list">
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="image-item">
+        <image class="uploaded-img" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}"></image>
+        <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+      </view>
+    </block>
+    <!-- 添加按钮 (彻底解除数量限制) -->
+    <view class="image-item add-btn" bindtap="chooseImage">
+      <text class="add-icon">+</text>
+    </view>
+  </view>
+
+  <!-- 发布按钮 -->
+  <button class="publish-btn" bindtap="submitPost" loading="{{isPublishing}}" disabled="{{isPublishing}}">发布动态</button>
+</view>

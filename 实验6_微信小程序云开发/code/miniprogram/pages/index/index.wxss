@@ -1,0 +1,204 @@
+page {
+  background-color: #F6F6F6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+}
+
+/* 顶部导航 */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88rpx;
+  background-color: #FFFFFF;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.nav-item {
+  font-size: 32rpx;
+  color: #999999;
+  margin: 0 40rpx;
+  position: relative;
+  padding-bottom: 10rpx;
+}
+
+.nav-item.active {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50rpx;
+  height: 6rpx;
+  background-color: #E64340; 
+  border-radius: 3rpx;
+}
+
+/* 动态流列表 */
+.feed-list {
+  padding-bottom: 40rpx;
+}
+
+.post-card {
+  background-color: #FFFFFF;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+/* 头部 */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background-color: #EEEEEE;
+}
+
+.nickname {
+  flex: 1;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.follow-btn {
+  font-size: 24rpx;
+  color: #FFFFFF;
+  background-color: #FF4D4F;
+  padding: 8rpx 24rpx;
+  border-radius: 24rpx;
+  font-weight: bold;
+}
+
+/* 文案区 */
+.content {
+  margin-bottom: 20rpx;
+}
+
+.text-content {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.text-content.collapsed {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.expand-btn {
+  color: #1E90FF;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  display: inline-block;
+}
+
+/* 视觉区 9宫格 */
+.media-area {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220rpx;
+}
+
+.img-wrapper .grid-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+  background-color: #EEEEEE;
+  display: block;
+}
+
+.more-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48rpx;
+  font-weight: bold;
+  border-radius: 8rpx;
+}
+
+.grid-img {
+  width: 100%;
+  height: 220rpx;
+  border-radius: 8rpx;
+  background-color: #EEEEEE;
+}
+
+/* 底部互动区 */
+.action-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #F5F5F5;
+  padding-top: 20rpx;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.action-item.dislike {
+  color: #D3D3D3;
+}
+
+.right-actions {
+  display: flex;
+}
+
+.right-actions .action-item {
+  margin-left: 40rpx;
+}
+
+.icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 8rpx;
+}
+
+.liked-text {
+  color: #FF4D4F;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999999;
+  padding: 100rpx 0;
+  font-size: 28rpx;
+}
