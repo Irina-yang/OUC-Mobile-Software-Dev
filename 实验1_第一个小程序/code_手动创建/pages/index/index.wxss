@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.greeting {
+  font-size: 40rpx;
+  margin-bottom: 50rpx;
+}

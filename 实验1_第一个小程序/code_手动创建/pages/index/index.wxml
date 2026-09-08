@@ -1,0 +1,7 @@
+<view class="container">
+  <!-- 显示一段动态文字 -->
+  <text class="greeting">{{message}}</text>
+  
+  <!-- 点击按钮触发 changeText 事件 -->
+  <button type="primary" bindtap="changeText">点击改变文字</button>
+</view>
