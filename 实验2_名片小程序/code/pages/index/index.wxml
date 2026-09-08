@@ -1,0 +1,61 @@
+<scroll-view class="scroll-container" scroll-y="true" enable-flex="true">
+  <!-- 上半部分：头图 -->
+  <image class="header-image" src="/images/header.jpg" mode="aspectFill"></image>
+
+  <!-- 下半部分：自定义个人信息卡片 -->
+  <view class="info-card">
+    
+    <!-- 姓名与专业信息 -->
+    <view class="header-info">
+      <text class="name">{{name}}</text>
+      <text class="subtitle">{{school}} | {{major}}</text>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 联系方式 -->
+    <view class="contact-info">
+      <view class="contact-item">
+        <text class="label">Email</text>
+        <text class="value">{{email}}</text>
+      </view>
+      <view class="contact-item">
+        <text class="label">GitHub</text>
+        <text class="value">{{github}}</text>
+      </view>
+    </view>
+
+    <!-- 个人标签 -->
+    <view class="tags-section">
+      <block wx:for="{{tags}}" wx:key="*this">
+        <view class="tag">{{item}}</view>
+      </block>
+    </view>
+
+  </view>
+
+  <!-- 百科履历卡片 -->
+  <view class="baike-card">
+    <view class="baike-header">
+      <view class="baike-title">个人履历</view>
+      <view class="baike-line"></view>
+    </view>
+
+    <block wx:for="{{baikeList}}" wx:key="category">
+      <view class="experience-item">
+        <view class="exp-category">
+          <view class="dot-icon"></view>
+          <text>{{item.category}}</text>
+        </view>
+        
+        <!-- 具体的经历列表 -->
+        <view class="exp-details">
+          <block wx:for="{{item.items}}" wx:for-item="detail" wx:key="*this">
+            <view class="detail-text">{{detail}}</view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+  
+</scroll-view>
