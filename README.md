@@ -145,7 +145,7 @@
 ### 📷 运行截图
 <img width="557" height="323" alt="图片" src="https://github.com/user-attachments/assets/16336c6c-82c4-4bad-8ceb-8ddf72590c37" />
 
-### [实验6：微信小程序云开发](./实验6_微信小程序<img width="540" height="1134" alt="387898fe039aeecb804c8f2a947f99ed" src="https://github.com/user-attachments/assets/384c88e2-071a-465f-87b8-7d7c98ac6b55" />
+### [实验6：微信小程序云开发](./实验6_微信小程序云开发)
 云开发)
 ---
 - **状态：** ✅ 已完成
